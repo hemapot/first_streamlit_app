@@ -583,6 +583,7 @@ def icc_readiness_page():
             }
         
     df3 = pd.DataFrame(dummy_data_3)
+    dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1))
 
     
       
@@ -598,6 +599,23 @@ def icc_readiness_page():
 
 
     #************************CONDITIONAL FORMATTING TEST - Trialling Hema's code - not working
+
+def highlight_Quality(row):
+    styles = []
+    for value in row:
+        if value == 'Low Moderate':
+            styles.append(f'background-color: Green;') # color: white
+        elif value == 'Moderate':
+            styles.append(f'background-color: yellow;') # color: black
+        elif value == 'High':
+            styles.append(f'background-color: orange; ') #color: white
+        elif value == 'Very High:
+            styles.append(f'background-color: Red; ') #color: white
+        elif value == 'Extreme':
+            styles.append(f'background-color: DarkRed;') # color: white
+        else:
+            styles.append('')
+    return styles
     #def highlight_ICC():
     #    styles = []
     #    for value in row:
