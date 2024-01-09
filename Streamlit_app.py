@@ -4,11 +4,8 @@ import numpy as np
 #import plost
 #from PIL import Image
 
-    
 # Page setting
 st.set_page_config(layout="wide")
-
-
 
 #********************************************************************
 # HOME PAGE
@@ -585,9 +582,7 @@ def icc_readiness_page():
             'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
             }
         
-    df3 = pd.dataframe(dummy_data_3)
-
- 
+    df3 = pd.DataFrame(dummy_data_3)
 
     
       
