@@ -600,8 +600,10 @@ def highlight_Quality(row):
             }
 
     df3 = pd.dataframe(dummy_data_3)
-    st.dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1)), unsafe_allow_html=True)
-
+    for index, row in df3.iterrows():
+    styled_row = [f'<div style="{highlight_quality(value)}">{value}</div>' for value in row]
+    st.write(st.markdown('\n'.join(styled_row)), unsafe_allow_html=True)
+ 
     
       
     #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
