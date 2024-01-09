@@ -597,8 +597,9 @@ def icc_readiness_page():
         else:
             styles.append('')
     return styles    
-    
-    dataframe(dummy_data_3.to_pandas().style.apply(highlight_Quality, axis = 1))
+
+    df3 = pd.DataFrame(dummy_data_3)
+    dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1))
 
     
       
