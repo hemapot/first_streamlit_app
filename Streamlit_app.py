@@ -4,6 +4,9 @@ import numpy as np
 #import plost
 #from PIL import Image
 
+    
+# Page setting
+st.set_page_config(layout="wide")
 
 def highlight_Quality(row):
     styles = []
@@ -21,9 +24,6 @@ def highlight_Quality(row):
         else:
             styles.append('')
     return styles    
-    
-# Page setting
-st.set_page_config(layout="wide")
 
 #********************************************************************
 # HOME PAGE
