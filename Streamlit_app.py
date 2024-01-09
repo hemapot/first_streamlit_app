@@ -599,8 +599,8 @@ def highlight_Quality(row):
             'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
             }
 
-   
-    st.dataframe(dummy_data_3.to_pandas().style.apply(highlight_Quality, axis = 1)), unsafe_allow_html=True)
+    df3 = pd.dataframe(dummy_data_3)
+    st.dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1)), unsafe_allow_html=True)
 
     
       
