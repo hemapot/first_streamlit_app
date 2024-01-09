@@ -599,12 +599,18 @@ def highlight_quality(value):
         return ''
 
     styled_rows = []
-    for index, row in df3.iterrows():
-        styled_row = [f'<td style="{highlight_quality(value)}">{value}</td>' for value in row]
-        styled_rows.append('<tr>{}</tr>'.format(''.join(styled_row)))
     
-    styled_table = '<table>{}</table>'.format(''.join(styled_rows))
-    st.markdown(styled_table, unsafe_allow_html=True)
+ html_table = '<table style="border-collapse: collapse;">'
+    html_table += '<tr><th>RCC</th><th>ICC</th><th>Day</th><th>FBI</th><th>FDI</th><th>ICC Level</th></tr>'
+    for _, row in df3.iterrows():
+        html_table += '<tr>'
+        for value in row:
+            html_table += f'<td style="{highlight_quality(value)}">{value}</td>'
+        html_table += '</tr>'
+    html_table += '</table>'
+    
+    # Display the HTML table
+    st.markdown(html_table, unsafe_allow_html=True)
 
     
       
