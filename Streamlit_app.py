@@ -573,33 +573,35 @@ def icc_readiness_page():
 
     #DUMMY DATA
         
-    dummy_data_3 = {
-            'RCC': ['Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians'],
-            'ICC': ['Heywood', 'Heywood', 'Heywood', 'Warrnambool', 'Warrnambool', 'Warrnambool', 'Colac', 'Colac', 'Colac', 'Ballarat', 'Ballarat', 'Ballarat', 'Ararat', 'Ararat', 'Ararat', 'Horsham', 'Horsham', 'Horsham'],
-            'Day': ['Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>'],
-            'FBI': ['Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme'],
-            'FDI': ['Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High'],
-            'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
-            }
-    def highlight_Quality(row):
+   dummy_data_3 = {
+    'RCC': ['Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians'],
+    'ICC': ['Heywood', 'Heywood', 'Heywood', 'Warrnambool', 'Warrnambool', 'Warrnambool', 'Colac', 'Colac', 'Colac', 'Ballarat', 'Ballarat', 'Ballarat', 'Ararat', 'Ararat', 'Ararat', 'Horsham', 'Horsham', 'Horsham'],
+    'Day': ['Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>'],
+    'FBI': ['Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme'],
+    'FDI': ['Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High'],
+    'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
+}
+
+def highlight_quality(row):
     styles = []
     for value in row:
-        if value == 'Low Moderate':
-            styles.append(f'background-color: Green;') # color: white
+        if value == 'Low-Moderate':
+            styles.append('background-color: Green;')
         elif value == 'Moderate':
-            styles.append(f'background-color: yellow;') # color: black
+            styles.append('background-color: yellow;')
         elif value == 'High':
-            styles.append(f'background-color: orange; ') #color: white
+            styles.append('background-color: orange; ')
         elif value == 'Very High':
-            styles.append(f'background-color: Red; ') #color: white
+            styles.append('background-color: Red; ')
         elif value == 'Extreme':
-            styles.append(f'background-color: DarkRed;') # color: white
+            styles.append('background-color: DarkRed;')
         else:
             styles.append('')
     return styles    
 
-    df3 = pd.DataFrame(dummy_data_3)
-    dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1))
+df3 = pd.DataFrame(dummy_data_3)
+styled_df = df3.style.apply(highlight_quality, axis=1)
+styled_df.to_excel('styled_dataframe.xlsx', engine='openpyxl', index=False)
 
     
       
