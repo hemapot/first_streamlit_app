@@ -599,10 +599,10 @@ def highlight_quality(value):
         return ''
 
 # Apply styles to the entire DataFrame
-styled_df = df3.style.applymap(highlight_quality)
+    styled_df = df3.style.applymap(highlight_quality)
 
 # Display the styled DataFrame
-styled_df
+    styled_df
 
     
       
