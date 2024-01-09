@@ -583,6 +583,25 @@ def icc_readiness_page():
             }
         
     df3 = pd.DataFrame(dummy_data_3)
+def highlight_quality(val):
+    if 'Low-Moderate' in val:
+        return 'background-color: Green; color: white'
+    elif 'Moderate' in val:
+        return 'background-color: yellow; color: black'
+    elif 'High' in val:
+        return 'background-color: orange; color: white'
+    elif 'Very High' in val:
+        return 'background-color: Red; color: white'
+    elif 'Extreme' in val:
+        return 'background-color: DarkRed; color: white'
+    else:
+        return ''
+
+    # Apply styles using the styler object
+    styled_df = df3.style.applymap(highlight_quality)
+    
+    # Display the styled DataFrame as an HTML table
+    st.markdown(styled_df.render(), unsafe_allow_html=True)
 
 
   
