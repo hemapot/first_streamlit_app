@@ -598,11 +598,13 @@ def highlight_quality(value):
     else:
         return ''
 
-# Apply styles to the entire DataFrame
-    styled_df = df3.style.applymap(highlight_quality)
-
-# Display the styled DataFrame
-    styled_df
+    styled_rows = []
+    for index, row in df3.iterrows():
+        styled_row = [f'<td style="{highlight_quality(value)}">{value}</td>' for value in row]
+        styled_rows.append('<tr>{}</tr>'.format(''.join(styled_row)))
+    
+    styled_table = '<table>{}</table>'.format(''.join(styled_rows))
+    st.markdown(styled_table, unsafe_allow_html=True)
 
     
       
