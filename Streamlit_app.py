@@ -598,7 +598,7 @@ def highlight_quality(val):
         return ''
 
     # Apply styles using the styler object
-    styled_df = (df3.style.applymap(highlight_quality),axis=1)
+    styled_df = (df3.style.applymap(highlight_quality,axis=1) ) 
     
     # Display the styled DataFrame as an HTML table
     st.markdown(styled_df.render(), unsafe_allow_html=True)
