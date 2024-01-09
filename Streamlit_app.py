@@ -573,34 +573,16 @@ def icc_readiness_page():
 
     #DUMMY DATA
         
-   dummy_data_3 = {
-    'RCC': ['Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians'],
-    'ICC': ['Heywood', 'Heywood', 'Heywood', 'Warrnambool', 'Warrnambool', 'Warrnambool', 'Colac', 'Colac', 'Colac', 'Ballarat', 'Ballarat', 'Ballarat', 'Ararat', 'Ararat', 'Ararat', 'Horsham', 'Horsham', 'Horsham'],
-    'Day': ['Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>'],
-    'FBI': ['Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme'],
-    'FDI': ['Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High'],
-    'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
-}
-
-    def highlight_Quality(row):
-    styles = []
-    for value in row:
-        if value == 'Low Moderate':
-            styles.append(f'background-color: Green;') # color: white
-        elif value == 'Moderate':
-            styles.append(f'background-color: yellow;') # color: black
-        elif value == 'High':
-            styles.append(f'background-color: orange; ') #color: white
-        elif value == 'Very High':
-            styles.append(f'background-color: Red; ') #color: white
-        elif value == 'Extreme':
-            styles.append(f'background-color: DarkRed;') # color: white
-        else:
-            styles.append('')
-    return styles    
-
+    dummy_data_3 = {
+            'RCC': ['Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians'],
+            'ICC': ['Heywood', 'Heywood', 'Heywood', 'Warrnambool', 'Warrnambool', 'Warrnambool', 'Colac', 'Colac', 'Colac', 'Ballarat', 'Ballarat', 'Ballarat', 'Ararat', 'Ararat', 'Ararat', 'Horsham', 'Horsham', 'Horsham'],
+            'Day': ['Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>', 'Tommorrow', '<Two days time>', '<Three days time>'],
+            'FBI': ['Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme', 'Moderate', 'High', 'Extreme'],
+            'FDI': ['Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High'],
+            'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
+            }
+        
     df3 = pd.DataFrame(dummy_data_3)
-    st. dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1))
 
     
       
@@ -616,9 +598,6 @@ def icc_readiness_page():
 
 
     #************************CONDITIONAL FORMATTING TEST - Trialling Hema's code - not working
-
-
-    
     #def highlight_ICC():
     #    styles = []
     #    for value in row:
