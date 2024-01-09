@@ -598,8 +598,9 @@ def highlight_Quality(row):
             'FDI': ['Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High', 'Low-Moderate', 'High', 'Very High'],
             'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
             }
-           
-    st.dataframe(dummy_data_3.to_pandas().style.apply(highlight_Quality, axis = 1))
+
+    df3 = pd.DataFrame(dummy_data_3)
+    st.dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1)), unsafe_allow_html=True)
 
     
       
