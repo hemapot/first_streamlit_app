@@ -582,32 +582,26 @@ def icc_readiness_page():
     'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
 }
 
-    def highlight_quality(row):
-        styles = []
-        for value in row:
-            if value == 'Low-Moderate':
-                styles.append('background-color: Green;')
-            elif value == 'Moderate':
-                styles.append('background-color: yellow;')
-            elif value == 'High':
-                styles.append('background-color: orange; ')
-            elif value == 'Very High':
-                styles.append('background-color: Red; ')
-            elif value == 'Extreme':
-                styles.append('background-color: DarkRed;')
-            else:
-                styles.append('')
-        return styles    
+    def highlight_Quality(row):
+    styles = []
+    for value in row:
+        if value == 'Low Moderate':
+            styles.append(f'background-color: Green;') # color: white
+        elif value == 'Moderate':
+            styles.append(f'background-color: yellow;') # color: black
+        elif value == 'High':
+            styles.append(f'background-color: orange; ') #color: white
+        elif value == 'Very High':
+            styles.append(f'background-color: Red; ') #color: white
+        elif value == 'Extreme':
+            styles.append(f'background-color: DarkRed;') # color: white
+        else:
+            styles.append('')
+    return styles    
 
     df3 = pd.DataFrame(dummy_data_3)
+    st. dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1))
 
-    st.title('Streamlit App with Styled DataFrame')
-
-# Apply styles to the DataFrame
-    styled_df = df3.style.applymap(highlight_quality)
-
-# Display the styled DataFrame
-    st.dataframe(styled_df, unsafe_allow_html=True)
     
       
     #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
