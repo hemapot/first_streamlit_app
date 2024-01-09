@@ -600,9 +600,7 @@ def highlight_Quality(row):
             }
 
     df3 = pd.dataframe(dummy_data_3)
-    for index, row in df3.iterrows():
-        styled_row = [f'<div style="{highlight_Quality(value)}">{value}</div>' for value in row]
-        st.write(st.markdown('\n'.join(styled_row)), unsafe_allow_html=True)
+
  
     
       
