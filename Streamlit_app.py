@@ -584,6 +584,26 @@ def icc_readiness_page():
         
     df3 = pd.DataFrame(dummy_data_3)
 
+def highlight_quality(value):
+    if value == 'Low-Moderate':
+        return 'background-color: Green;'
+    elif value == 'Moderate':
+        return 'background-color: yellow;'
+    elif value == 'High':
+        return 'background-color: orange; '
+    elif value == 'Very High':
+        return 'background-color: Red; '
+    elif value == 'Extreme':
+        return 'background-color: DarkRed;'
+    else:
+        return ''
+
+# Apply styles to the entire DataFrame
+styled_df = df3.style.applymap(highlight_quality)
+
+# Display the styled DataFrame
+styled_df
+
     
       
     #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
