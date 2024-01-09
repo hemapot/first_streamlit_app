@@ -584,34 +584,8 @@ def icc_readiness_page():
         
     df3 = pd.DataFrame(dummy_data_3)
 
-def highlight_quality(value):
-    if value == 'Low-Moderate':
-        return 'background-color: Green;'
-    elif value == 'Moderate':
-        return 'background-color: yellow;'
-    elif value == 'High':
-        return 'background-color: orange; '
-    elif value == 'Very High':
-        return 'background-color: Red; '
-    elif value == 'Extreme':
-        return 'background-color: DarkRed;'
-    else:
-        return ''
 
-    styled_rows = []
-    
- html_table = '<table style="border-collapse: collapse;">'
-    html_table += '<tr><th>RCC</th><th>ICC</th><th>Day</th><th>FBI</th><th>FDI</th><th>ICC Level</th></tr>'
-    for _, row in df3.iterrows():
-        html_table += '<tr>'
-        for value in row:
-            html_table += f'<td style="{highlight_quality(value)}">{value}</td>'
-        html_table += '</tr>'
-    html_table += '</table>'
-    
-    # Display the HTML table
-    st.markdown(html_table, unsafe_allow_html=True)
-
+  
     
       
     #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
