@@ -582,22 +582,22 @@ def icc_readiness_page():
     'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
 }
 
-def highlight_quality(row):
-    styles = []
-    for value in row:
-        if value == 'Low-Moderate':
-            styles.append('background-color: Green;')
-        elif value == 'Moderate':
-            styles.append('background-color: yellow;')
-        elif value == 'High':
-            styles.append('background-color: orange; ')
-        elif value == 'Very High':
-            styles.append('background-color: Red; ')
-        elif value == 'Extreme':
-            styles.append('background-color: DarkRed;')
-        else:
-            styles.append('')
-    return styles    
+    def highlight_quality(row):
+        styles = []
+        for value in row:
+            if value == 'Low-Moderate':
+                styles.append('background-color: Green;')
+            elif value == 'Moderate':
+                styles.append('background-color: yellow;')
+            elif value == 'High':
+                styles.append('background-color: orange; ')
+            elif value == 'Very High':
+                styles.append('background-color: Red; ')
+            elif value == 'Extreme':
+                styles.append('background-color: DarkRed;')
+            else:
+                styles.append('')
+        return styles    
 
     df3 = pd.DataFrame(dummy_data_3)
 
