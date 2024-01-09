@@ -583,39 +583,46 @@ def icc_readiness_page():
             }
         
     df3 = pd.DataFrame(dummy_data_3)
-def highlight_quality(val):
-    if 'Low-Moderate' in val:
+def highlight_quality(value):
+    if 'Low-Moderate' in vauel:
         return 'background-color: Green; color: white'
-    elif 'Moderate' in val:
+    elif 'Moderate' in value:
         return 'background-color: yellow; color: black'
-    elif 'High' in val:
+    elif 'High' in value:
         return 'background-color: orange; color: white'
-    elif 'Very High' in val:
+    elif 'Very High' in value:
         return 'background-color: Red; color: white'
-    elif 'Extreme' in val:
+    elif 'Extreme' in value:
         return 'background-color: DarkRed; color: white'
     else:
         return ''
 
-    # Apply styles using the styler object
-    styled_df = (df3.style.applymap(highlight_quality,axis=1) ) 
+    # Create an HTML table with styles
+    html_table = '<table style="border-collapse: collapse; width: 100%;">'
+    html_table += '<tr><th>RCC</th><th>ICC</th><th>Day</th><th>FBI</th><th>FDI</th><th>ICC Level</th></tr>'
+    for _, row in df3.iterrows():
+        html_table += '<tr>'
+        for value in row:
+            html_table += f'<td style="{highlight_quality(value)}">{value}</td>'
+        html_table += '</tr>'
+    html_table += '</table>'
     
-    # Display the styled DataFrame as an HTML table
-    st.markdown(styled_df.render(), unsafe_allow_html=True)
-
-
-  
+    # Display the HTML table
+    st.markdown(html_table, unsafe_allow_html=True)
+    
     
       
-    #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
-    # Create a dropdown filter for 'RCC' column
-    selected_RCC = st.selectbox('Select RCC:', df3['RCC'].unique())
         
-    # Filter the DataFrame based on the selected city
-    filtered_df = df3[df3['RCC'] == selected_RCC]
-    
-    # Display the filtered DataFrame
-    st.dataframe(filtered_df, use_container_width=True, hide_index=True)
+          
+        #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
+        # Create a dropdown filter for 'RCC' column
+        selected_RCC = st.selectbox('Select RCC:', df3['RCC'].unique())
+            
+        # Filter the DataFrame based on the selected city
+        filtered_df = df3[df3['RCC'] == selected_RCC]
+        
+        # Display the filtered DataFrame
+        st.dataframe(filtered_df, use_container_width=True, hide_index=True)
 
 
     #************************CONDITIONAL FORMATTING TEST - Trialling Hema's code - not working
