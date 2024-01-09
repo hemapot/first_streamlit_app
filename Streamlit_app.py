@@ -585,7 +585,7 @@ def icc_readiness_page():
             'ICC Level': ['Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)', 'Nil', 'B (I)', 'C (60)']
             }
         
-    df3 = pd.dataframe(dummy_data_3)
+    #df3 = pd.dataframe(dummy_data_3)
 
     def highlight_Quality(row):
         styles = []
@@ -603,7 +603,7 @@ def icc_readiness_page():
             else:
                 styles.append('')
         return styles    
-    st.dataframe(df3.to_pandas().style.apply(highlight_Quality, axis = 1))
+    st.dataframe(dummy_data_3.to_pandas().style.apply(highlight_Quality, axis = 1))
 
     
       
