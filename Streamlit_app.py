@@ -7,6 +7,23 @@ import numpy as np
 # Page setting
 st.set_page_config(layout="wide")
 
+def highlight_Quality(row):
+    styles = []
+    for value in row:
+        if value == 'Low Moderate':
+            styles.append(f'background-color: Green;') # color: white
+        elif value == 'Moderate':
+            styles.append(f'background-color: yellow;') # color: black
+        elif value == 'High':
+            styles.append(f'background-color: orange; ') #color: white
+        elif value == 'Very High':
+            styles.append(f'background-color: Red; ') #color: white
+        elif value == 'Extreme':
+            styles.append(f'background-color: DarkRed;') # color: white
+        else:
+            styles.append('')
+    return styles    
+
 #********************************************************************
 # HOME PAGE
 def home_page():
@@ -572,24 +589,7 @@ def icc_readiness_page():
     st.text('Last updated <24 hour time> on <day> <date> <month> <year>')
 
     #DUMMY DATA
-def highlight_Quality(row):
-    styles = []
-    for value in row:
-        if value == 'Low Moderate':
-            styles.append(f'background-color: Green;') # color: white
-        elif value == 'Moderate':
-            styles.append(f'background-color: yellow;') # color: black
-        elif value == 'High':
-            styles.append(f'background-color: orange; ') #color: white
-        elif value == 'Very High':
-            styles.append(f'background-color: Red; ') #color: white
-        elif value == 'Extreme':
-            styles.append(f'background-color: DarkRed;') # color: white
-        else:
-            styles.append('')
-    return styles    
 
-        
     dummy_data_3 = {
             'RCC': ['Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Barwon South West', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians', 'Grampians'],
             'ICC': ['Heywood', 'Heywood', 'Heywood', 'Warrnambool', 'Warrnambool', 'Warrnambool', 'Colac', 'Colac', 'Colac', 'Ballarat', 'Ballarat', 'Ballarat', 'Ararat', 'Ararat', 'Ararat', 'Horsham', 'Horsham', 'Horsham'],
