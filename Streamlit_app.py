@@ -599,10 +599,15 @@ def highlight_quality(row):
             styles.append('')
     return styles    
 
-df3 = pd.DataFrame(dummy_data_3)
-styled_df = df3.style.apply(highlight_quality, axis=1)
-styled_df.to_excel('styled_dataframe.xlsx', engine='openpyxl', index=False)
+    df3 = pd.DataFrame(dummy_data_3)
 
+    st.title('Streamlit App with Styled DataFrame')
+
+# Apply styles to the DataFrame
+    styled_df = df3.style.applymap(highlight_quality)
+
+# Display the styled DataFrame
+    st.dataframe(styled_df, unsafe_allow_html=True)
     
       
     #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
