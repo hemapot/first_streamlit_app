@@ -587,9 +587,9 @@ def icc_readiness_page():
         
     df3 = pd.DataFrame(dummy_data_3)
 
+#*********************************************************************
 
-
-    def SESMAP_page():
+def SESMAP_page():
         st.title("SES MAP")
         st.header ('SES MAP')
         st.text('Last updated <24 hour time> on <day> <date> <month> <year>')
