@@ -591,8 +591,6 @@ def icc_readiness_page():
 
 def SESMAP_page():
         st.title("SES MAP")
-        st.header ('SES MAP')
-        st.text('Last updated <24 hour time> on <day> <date> <month> <year>')
 
     data = [
         {"Incident No": 473095, "Incident Status": "NEW", "Incident Type": "TREE DOWN - TRAFFIC HAZ", "Event No": 221155700, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:07:00", "Event Code": "TREE DOWN - TRAFFIC HAZ", "Incident Location": "MELTON WEST", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 18:01:00", "Name": "WESTMELTON DR/CHELMSFORD WAY", "Longitude": 144.5656267135199, "Latitude": -37.67734268908826, "Resource Count": 0},
