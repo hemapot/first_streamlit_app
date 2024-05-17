@@ -593,7 +593,7 @@ def SESMAP_page():
         st.title("SES MAP")
         st.header ('SES MAP')
         st.text('Last updated <24 hour time> on <day> <date> <month> <year>')
-    
+
     data = [
         {"Incident No": 473095, "Incident Status": "NEW", "Incident Type": "TREE DOWN - TRAFFIC HAZ", "Event No": 221155700, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:07:00", "Event Code": "TREE DOWN - TRAFFIC HAZ", "Incident Location": "MELTON WEST", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 18:01:00", "Name": "WESTMELTON DR/CHELMSFORD WAY", "Longitude": 144.5656267135199, "Latitude": -37.67734268908826, "Resource Count": 0},
         {"Incident No": 473085, "Incident Status": "CLEAR", "Incident Type": "TREE DOWN - TRAFFIC HAZ", "Event No": 221155689, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:06:00", "Event Code": "TREE DOWN - TRAFFIC HAZ", "Incident Location": "TALLAROOK", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 17:45:00", "Name": "HUME FWY", "Longitude": 145.08058008266482, "Latitude": -37.1509268080358, "Resource Count": 0},
@@ -627,8 +627,6 @@ def SESMAP_page():
     
     # Display the folium map using Streamlit
     st_folium(m, width=700, height=500)
-          
-
 
 #*********************************************************************
 #SIDEBAR
