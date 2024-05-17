@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 #import plost
 #from PIL import Image
+import folium
+from streamlit_folium import st_folium
+
 
 # Page setting
 st.set_page_config(layout="wide")
@@ -584,151 +587,47 @@ def icc_readiness_page():
         
     df3 = pd.DataFrame(dummy_data_3)
 
+
+
+    def SESMAP_page():
+        st.title("SES MAP")
+        st.header ('SES MAP')
+        st.text('Last updated <24 hour time> on <day> <date> <month> <year>')
     
-      
-    #************************DROP DOWN FILTER FOR DATAFRAME - RCC ONLY - WORKING
-    # Create a dropdown filter for 'RCC' column
-    selected_RCC = st.selectbox('Select RCC:', df3['RCC'].unique())
-        
-    # Filter the DataFrame based on the selected city
-    filtered_df = df3[df3['RCC'] == selected_RCC]
+    data = [
+        {"Incident No": 473095, "Incident Status": "NEW", "Incident Type": "TREE DOWN - TRAFFIC HAZ", "Event No": 221155700, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:07:00", "Event Code": "TREE DOWN - TRAFFIC HAZ", "Incident Location": "MELTON WEST", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 18:01:00", "Name": "WESTMELTON DR/CHELMSFORD WAY", "Longitude": 144.5656267135199, "Latitude": -37.67734268908826, "Resource Count": 0},
+        {"Incident No": 473085, "Incident Status": "CLEAR", "Incident Type": "TREE DOWN - TRAFFIC HAZ", "Event No": 221155689, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:06:00", "Event Code": "TREE DOWN - TRAFFIC HAZ", "Incident Location": "TALLAROOK", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 17:45:00", "Name": "HUME FWY", "Longitude": 145.08058008266482, "Latitude": -37.1509268080358, "Resource Count": 0},
+        {"Incident No": 472996, "Incident Status": "CLEAR", "Incident Type": "TREE DOWN - THREAT TO FALL", "Event No": 221155611, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:06:00", "Event Code": "TREE DOWN - THREAT TO FALL", "Incident Location": "CAMPBELLFIELD", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 16:51:00", "Name": "1780 SYDNEY RD", "Longitude": 144.95573354601217, "Latitude": -37.66966761830623, "Resource Count": 0},
+        {"Incident No": 473077, "Incident Status": "NEW", "Incident Type": "FLOOD - POT TO ENT. PREMISES", "Event No": 221155682, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:06:00", "Event Code": "FLOOD - POT TO ENT. PREMISES", "Incident Location": "PORT MELBOURNE", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 17:35:00", "Name": "168 STOKES ST", "Longitude": 144.93925482896088, "Latitude": -37.838397147604034, "Resource Count": 1},
+        {"Incident No": 473098, "Incident Status": "NEW", "Incident Type": "TREE DOWN - TRAFFIC HAZ", "Event No": 221155703, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:06:00", "Event Code": "TREE DOWN - TRAFFIC HAZ", "Incident Location": "HEYWOOD", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 18:04:00", "Name": "MT CLAY RD", "Longitude": 141.660368137136, "Latitude": -38.15325331986467, "Resource Count": 0},
+        {"Incident No": 473099, "Incident Status": "NEW", "Incident Type": "TREE DOWN - TRAFFIC HAZ", "Event No": 221155704, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:05:00", "Event Code": "TREE DOWN - TRAFFIC HAZ", "Incident Location": "SHADY CREEK", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 18:05:00", "Name": "ARALUEN RD/OLD SALE RD", "Longitude": 146.08524968035803, "Latitude": -38.07554554632111, "Resource Count": 0},
+        {"Incident No": 472929, "Incident Status": "CLEAR", "Incident Type": "TREE DOWN - ON VEHICLE", "Event No": 221155545, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:05:00", "Event Code": "TREE DOWN - ON VEHICLE", "Incident Location": "SAILORS GULLY", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 16:14:00", "Name": "32 LETHEBYS RD", "Longitude": 144.23401827357114, "Latitude": -36.711649689712814, "Resource Count": 0},
+        {"Incident No": 472218, "Incident Status": "NEW", "Incident Type": "TREE DOWN - RESTRICT ACCESS", "Event No": 221154821, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:05:00", "Event Code": "TREE DOWN - RESTRICT ACCESS", "Incident Location": "MOUNT EVELYN", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 09:23:00", "Name": "19 HUNTER RD", "Longitude": 145.41294423563647, "Latitude": -37.803350898832136, "Resource Count": 1},
+        {"Incident No": 473097, "Incident Status": "NEW", "Incident Type": "TREE DOWN - RESTRICT ACCESS", "Event No": 221155702, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:05:00", "Event Code": "TREE DOWN - RESTRICT ACCESS", "Incident Location": "NARRE WARREN", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 18:04:00", "Name": "6 IMMY PDE", "Longitude": 145.31971358079466, "Latitude": -38.04280593990829, "Resource Count": 0},
+        {"Incident No": 473096, "Incident Status": "NEW", "Incident Type": "TREE DOWN - THREAT TO FALL", "Event No": 221155701, "Territory": "SES", "Last Update DateTime": "21/11/2022 18:04:00", "Event Code": "TREE DOWN - THREAT TO FALL", "Incident Location": "CASTLEMAINE", "Incident Size": "SMALL", "Origin DateTime": "21/11/2022 18:03:00", "Name": "3 MARY ST", "Longitude": 144.21164665449749, "Latitude": -37.047305249015416, "Resource Count": 0},
+    ]
     
-    # Display the filtered DataFrame
-    st.dataframe(filtered_df, use_container_width=True, hide_index=True)
-
-
-    #************************CONDITIONAL FORMATTING TEST - Trialling Hema's code - not working
-    #def highlight_ICC():
-    #    styles = []
-    #    for value in row:
-    #        styles.append(f'background-color: Green;') # color: white
-    #    return styles
-
-
-    #def highlight_ICC:
-    #    styles = []
-    #    for value in row:
-    #        if value == 'Nil':
-    #            styles.append(f'background-color: Green;') # color: white
-    #        elif value == 'B (I)':
-    #            styles.append(f'background-color: orange; ') #color: white
-    #        elif value == 'C (60)':
-    #            styles.append(f'background-color: Red; ') #color: white
-    #        else:
-    #            styles.append('')
-    #    return styles
+    # Convert the list of dictionaries to a DataFrame
+    df = pd.DataFrame(data)
     
-    #sql = f"Select TITLE as ICC , 'ICC Level' from df3"  
-    #        data_df = session.sql(sql)
-    #        st.dataframe(data_df.to_pandas().style.apply(highlight_ICC, axis = 1))
-
-
-    # Apply the styling function to the DataFrame using applymap
-    #styled_df = df3.style.applymap(highlight_ICC)
-
-    # Render the styled DataFrame using st.dataframe
-    #st.dataframe(styled_df, unsafe_allow_html=True)
-
-    #************************CONDITIONAL FORMATTING TEST - trialing bespoke highlighting - NOT WORKING
-    # Function for conditional formatting of string values
-    #def highlight_strings(val):
-    #    color = 'background-color: green' if 'Nil' in val.lower() else ''
-    #    return color
+    # Create a folium map centered around Victoria, Australia
+    m = folium.Map(location=[-37.4713, 144.7852], zoom_start=6)
     
-    # Apply the styling function to the DataFrame using applymap
-    #styled_df = df3.style.applymap(highlight_strings)
+    # Add incident markers to the map
+    for idx, row in df.iterrows():
+        folium.Marker(
+            location=[row['Latitude'], row['Longitude']],
+            popup=f"{row['Incident Type']} at {row['Name']} ({row['Incident Location']})",
+            tooltip=row['Incident No']
+        ).add_to(m)
     
-    # Render the styled DataFrame using st.dataframe
-    #st.dataframe(styled_df, use_container_width=True, hide_index=True)
-    #st.dataframe(styled_df, unsafe_allow_html=True)
-    #st.dataframe(filtered_df, use_container_width=True, hide_index=True, styled_df, unsafe_allow_html=True)
+    # Set up the Streamlit app
+    st.title("Victoria, Australia Incident Map")
+    st.write("This map shows various incidents reported in Victoria, Australia.")
     
-    #************************CONDITIONAL FORMATTING TEST - trialing max and min highlighting - NOT WORKING
-    # Columns to highlight
-    #highlight_columns = ('ICC Level')
-
-    #apply styling to highlihgt max and min values
-    #styled_df3 = df3.style\
-    #   .background_gradient(subset=highlight_columns, cmap='viridis')
-        #.highlight_max(subset=highlight_columns, color='lightgreen')\
-        #.highlight_min(subset=highlight_columns, color='red')
-        
-
-    #************************DROP DOWN FILTER FOR DATAFRAME - FILTERS CONNECTED - NOT QUITE WORKING, CAN'T ALSO FILTER ICC AS WELL
-    # Create a dropdown filter for the 'ICC' and 'RCC' column
-    #selected_RCC = st.selectbox('Select RCC:', df3['RCC'].unique())
-    
-    # Filter the DataFrame based on the selected city
-    #filtered_ICC = df3[df3['RCC'] == selected_RCC]
-
-    #selected_ICC = st.selectbox('Select ICC:', filtered_ICC['ICC'].unique())
-    
-    # Display the filtered DataFrame
-    #st.dataframe(filtered_ICC, hide_index=True)
-
-    #************************DROP DOWN FILTER FOR DATAFRAME - FILTERS NOT CONNECTED
-    # Create a dropdown filter for the 'ICC' and 'RCC' column
-    #selected_RCC = st.selectbox('Select RCC:', df3['RCC'].unique())
-    #selected_ICC = st.selectbox('Select ICC:', df3['ICC'].unique())
-    
-    # Filter the DataFrame based on the selected city
-    #filtered_df = df3[(df3['RCC'] == selected_RCC) & (df3['ICC'] == selected_ICC)]
-    
-    # Display the filtered DataFrame
-    #st.dataframe(filtered_df, hide_index=True)
-    
-    #************************BASIC DATA FRAME
-    #st.dataframe(df3, hide_index=True)
-
-
-    #************************CONDITIONAL FORMATTING TEST - DOES NOT WORK
-    # Function to apply conditional formatting based on specific strings
-    #def highlight_specific_strings(val, target_strings):
-    #    return 'background-color: red' if val in target_strings else ''
-    
-    # Specify the target strings for conditional formatting
-    #target_strings = ['B (I)', 'C (60)']
-    
-    # Apply the styling function to the DataFrame
-    #styled_df = df3.applymap(lambda x: highlight_specific_strings(x, target_strings))
-    
-    # Render the styled DataFrame
-    #st.dataframe(styled_df, hide_index=True)
-    #st.dataframe(styled_df, hide_index=True, unsafe_allow_html=True)
-
-
-#**********************************************************
-# Style of non-editable table - NEED TO EDIT THIS ONE - DOESN'T WORK FOR EDITABLE TABLES
-#    header_style = '''
-#        <style>
-#            thead{
-#                background-color: #C6E8F6;
-#                color: #FFFFFF;
-#                }
-#        </style>
-#    '''
-#    st.markdown(header_style, unsafe_allow_html=True)
-
-#***************************************************************
-#OLD VERSION OF TABLES FOR REFERENCE
-#st.data_editor(
-#        df2, 
-#        column_config={
-#            "ICC": "ICC",
-#            "Day": "Day",
-#            "Confidence level": st.column_config.TextColumn("Confidence level", width=None, help="FBAN confidence level", disabled=None, required=True, default=None, max_chars=4, validate=None),
-#            "Fuel Type Driver": st.column_config.SelectboxColumn("Fuel Type Driver", help="Fuel driving fire behaviour", disabled=None, required=True, default=None, options=["Forest", "Grass", "Mallee", "Pine"]),
-#            "FBI": "FBI",
-#            "FDI": "FDI",
-#            "Wind Change": st.column_config.SelectboxColumn("Wind Change", help="If there is a wind change or not", disabled=None, required=True, default="No", options=["Yes", "No"]),
-#            "Ignitability": "Ignitability",
-#            "Max Duration": st.column_config.SelectboxColumn("Max duration", help="Maximum duration of the fire risk", disabled=None, required=True, default=None, options=["<2hrs", "2-6hrs", ">6hrs"]),
-#            "Min to 5ha": st.column_config.SelectboxColumn("Min to 5ha", help="Minimum time to 5ha", disabled=None, required=True, default=None, options=["<15 min", "15-30 min", ">30min", ">60 min"]),
-#            "FDP": "FDP",
-#            "Lightning": "Lightning",
-#            "Harvest remaining": st.column_config.ProgressColumn("Harvest remaining", width=None, help="% harvest to be completed", format=None, min_value=0, max_value=1),
-#        },     
-#    )
+    # Display the folium map using Streamlit
+    st_folium(m, width=700, height=500)
+          
 
 
 #*********************************************************************
@@ -774,3 +673,5 @@ elif page == "Gippsland":
     gippsland_page()
 elif page == "ICC Readiness Detail JSOP 02.03":
     icc_readiness_page()
+elif page == "SES_MAP":
+    SESMAP_page()
